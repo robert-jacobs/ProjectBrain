@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My First App</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_song">Play Music</string>
+    <string name="button_square">Move in a Square</string>
+    <string name="button_circle">Move in a Circle</string>
+    <string name="button_straight">Move in a Line</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <color name="bg">#071019</color>
+    <color name="button">#01DF01</color>
+</resources>
