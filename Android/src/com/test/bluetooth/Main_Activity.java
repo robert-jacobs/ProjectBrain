@@ -63,9 +63,28 @@ public class Main_Activity extends Activity {
 					Thread.yield();
 				}
 							
-				//drive in a square example script values
-				int[] t = new int[]{152,17,137,1,44,128,0,
-						156,1,144,137,1,44,0,1,157,0,90,153};
+				int[] t = new int[19];
+				t[0] = 152;
+				t[1] = 17;
+				t[2] = 137;
+				t[3] = 1;
+				t[4] = 44;
+				t[5] = 128;
+				t[6] = 0;
+				t[7] = 156;
+				t[8] = 1;
+				t[9] = 144;
+				
+				t[10] = 137;
+				t[11] = 1;
+				t[12] = 44;
+				t[13] = 0;
+				t[14] = 1;
+				
+				t[15] = 157;
+				t[16] = 0;
+				t[17] = 90;
+				t[18] = 153;
 				
 				for(int i = 0; i < t.length; i++){
 					connectedThread.write(t[i]);
