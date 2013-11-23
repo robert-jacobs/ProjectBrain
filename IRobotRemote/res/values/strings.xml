@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">IRobotRemote</string>
+    <string name="action_settings">Settings</string>
+    <string name="button1">Forward</string>
+    <string name="button2">Left</string>
+    <string name="button3">Right</string>
+    <string name="button4">Backward</string>
+
+</resources>

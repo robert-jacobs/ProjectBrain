@@ -64,8 +64,8 @@ public class Main_Activity extends Activity {
 				}
 							
 				//drive in a square example script values
-				int[] t = new int[]{152,17,137,1,44,128,0,
-						156,1,144,137,1,44,0,1,157,0,90,153};
+				int[] t = new int[]{IRobot.script,17,IRobot.drive,1,44,IRobot.start,0,
+						IRobot.waitDistance,1,144,IRobot.drive,1,44,0,1,IRobot.waitAngle,0,90,IRobot.playScript};
 				
 				for(int i = 0; i < t.length; i++){
 					connectedThread.write(t[i]);
@@ -73,7 +73,7 @@ public class Main_Activity extends Activity {
 				}
 				
 				int[] u = new int[1];
-				u[0] = 153;
+				u[0] = IRobot.playScript;
 				
 				for(int x = 0; x < u.length; x++){
 					connectedThread.write(u[x]);
