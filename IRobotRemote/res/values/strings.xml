@@ -7,5 +7,10 @@
     <string name="button2">Left</string>
     <string name="button3">Right</string>
     <string name="button4">Backward</string>
+    <string name="button5">STOP</string>
+    <string name="button6">L</string>
+    <string name="button7">R</string>
+    <string name="button8">l</string>
+    <string name="button9">r</string>
 
 </resources>

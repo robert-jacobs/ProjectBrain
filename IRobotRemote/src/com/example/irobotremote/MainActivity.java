@@ -173,8 +173,8 @@ public class MainActivity extends Activity {
 					//int[] t = new int[]{152, 17, 137, 1, 44, 128, 0, 156, 1, 144, 137, 1, 44, 0, 1, 157, 0 , 90, 153};
 					
 					//drive forward and wait for bump
-					int[] t = new int[]{152, 27, 137,1,144,128,0,158,5,137,0,0,0,0,155,5,137,255,56,128,0,156,255,156,137,0,0,0,0};
-					//int[] t = new int[]{152, 13, 137,1,144,128,0,156,1,144,137,0,0,0,0};
+					int[] t = new int[]{152, 5, 137,1,144,128,0};
+					//int[] t = new int[]{152, 27, 137,1,144,128,0,158,5,137,0,0,0,0,155,5,137,255,56,128,0,156,255,156,137,0,0,0,0};
 					
 					//int[] t = new int[]{IRobot.drive, 0, 100, 128, 0};
 					//int[] t = new int[]{IRobot.script,17,IRobot.drive,1,44,IRobot.start,0,
@@ -206,6 +206,48 @@ public class MainActivity extends Activity {
 		mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
 	}
 
+	public void moveMoreLeft(View view) {
+		Log.i(tag,"moveLeft");
+		mHandler = new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				Log.i(tag,"hmmm...");
+				switch(msg.what){
+				case SUCCESS_CONNECT:
+					Log.i(tag,"Inside Move Forward");
+					ConnectedThread connectedThread = new ConnectedThread((BluetoothSocket)msg.obj);
+					
+					Log.i(tag, "Starting to write");
+											
+					int[] t = new int[]{152, 13, 137,1,144,00,01,157,0,90,137,0,0,0,0};
+					
+					for(int i = 0; i < t.length; i++){
+						connectedThread.write(t[i]);
+						Thread.yield();
+					}
+					
+					int[] r = new int[] {153};
+					
+					for(int i = 0; i < r.length; i++){
+						connectedThread.write(r[i]);
+						Thread.yield();
+					}
+					
+					Log.i(tag,"END of first case in Move Forward");
+					break;
+				case MESSAGE_READ:
+					Log.i(tag,"inside read");
+					byte[] readBuf = (byte[])msg.obj;
+					String string = new String(readBuf);
+					Toast.makeText(getApplicationContext(), string, 0).show();
+					break;
+				}
+			}
+		};
+		mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
+	}
+	
 	public void moveLeft(View view) {
 		Log.i(tag,"moveLeft");
 		mHandler = new Handler(){
@@ -220,7 +262,7 @@ public class MainActivity extends Activity {
 					
 					Log.i(tag, "Starting to write");
 											
-					int[] t = new int[]{152, 13, 137,1,144,00,01,157,0,30,137,0,0,0,0};
+					int[] t = new int[]{152, 13, 137,1,144,00,01,157,0,45,137,0,0,0,0};
 					
 					for(int i = 0; i < t.length; i++){
 						connectedThread.write(t[i]);
@@ -248,6 +290,90 @@ public class MainActivity extends Activity {
 		mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
 	}
 
+	public void moveLessLeft(View view) {
+		Log.i(tag,"moveLeft");
+		mHandler = new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				Log.i(tag,"hmmm...");
+				switch(msg.what){
+				case SUCCESS_CONNECT:
+					Log.i(tag,"Inside Move Forward");
+					ConnectedThread connectedThread = new ConnectedThread((BluetoothSocket)msg.obj);
+					
+					Log.i(tag, "Starting to write");
+											
+					int[] t = new int[]{152, 13, 137,1,144,00,01,157,0,15,137,0,0,0,0};
+					
+					for(int i = 0; i < t.length; i++){
+						connectedThread.write(t[i]);
+						Thread.yield();
+					}
+					
+					int[] r = new int[] {153};
+					
+					for(int i = 0; i < r.length; i++){
+						connectedThread.write(r[i]);
+						Thread.yield();
+					}
+					
+					Log.i(tag,"END of first case in Move Forward");
+					break;
+				case MESSAGE_READ:
+					Log.i(tag,"inside read");
+					byte[] readBuf = (byte[])msg.obj;
+					String string = new String(readBuf);
+					Toast.makeText(getApplicationContext(), string, 0).show();
+					break;
+				}
+			}
+		};
+		mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
+	}
+	
+	public void moveMoreRight(View view) {
+		Log.i(tag,"moveRight");
+		mHandler = new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				Log.i(tag,"hmmm...");
+				switch(msg.what){
+				case SUCCESS_CONNECT:
+					Log.i(tag,"Inside Move Forward");
+					ConnectedThread connectedThread = new ConnectedThread((BluetoothSocket)msg.obj);
+					
+					Log.i(tag, "Starting to write");
+											
+					int[] t = new int[]{152, 13, 137,1,144,255,255,157,255,166,137,0,0,0,0};
+					
+					for(int i = 0; i < t.length; i++){
+						connectedThread.write(t[i]);
+						Thread.yield();
+					}
+					
+					int[] r = new int[] {153};
+					
+					for(int i = 0; i < r.length; i++){
+						connectedThread.write(r[i]);
+						Thread.yield();
+					}
+					
+					Log.i(tag,"END of first case in Move Forward");
+					break;
+				case MESSAGE_READ:
+					Log.i(tag,"inside read");
+					byte[] readBuf = (byte[])msg.obj;
+					String string = new String(readBuf);
+					Toast.makeText(getApplicationContext(), string, 0).show();
+					break;
+				}
+			}
+		};
+		mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
+	}
+	
 	public void moveRight(View view) {
 		Log.i(tag,"moveRight");
 		mHandler = new Handler(){
@@ -262,7 +388,7 @@ public class MainActivity extends Activity {
 					
 					Log.i(tag, "Starting to write");
 											
-					int[] t = new int[]{152, 13, 137,1,144,255,255,157,255,202,137,0,0,0,0};
+					int[] t = new int[]{152, 13, 137,1,144,255,255,157,255,211,137,0,0,0,0};
 					
 					for(int i = 0; i < t.length; i++){
 						connectedThread.write(t[i]);
@@ -290,6 +416,48 @@ public class MainActivity extends Activity {
 		mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
 	}
 
+	public void moveLessRight(View view) {
+		Log.i(tag,"moveRight");
+		mHandler = new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				Log.i(tag,"hmmm...");
+				switch(msg.what){
+				case SUCCESS_CONNECT:
+					Log.i(tag,"Inside Move Forward");
+					ConnectedThread connectedThread = new ConnectedThread((BluetoothSocket)msg.obj);
+					
+					Log.i(tag, "Starting to write");
+											
+					int[] t = new int[]{152, 13, 137,1,144,255,255,157,255,241,137,0,0,0,0};
+					
+					for(int i = 0; i < t.length; i++){
+						connectedThread.write(t[i]);
+						Thread.yield();
+					}
+					
+					int[] r = new int[] {153};
+					
+					for(int i = 0; i < r.length; i++){
+						connectedThread.write(r[i]);
+						Thread.yield();
+					}
+					
+					Log.i(tag,"END of first case in Move Forward");
+					break;
+				case MESSAGE_READ:
+					Log.i(tag,"inside read");
+					byte[] readBuf = (byte[])msg.obj;
+					String string = new String(readBuf);
+					Toast.makeText(getApplicationContext(), string, 0).show();
+					break;
+				}
+			}
+		};
+		mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
+	}
+	
 	public void moveBackward(View view) {
 		Log.i(tag,"moveBackward");
 		mHandler = new Handler(){
@@ -331,6 +499,48 @@ public class MainActivity extends Activity {
 		};
 		mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
 		
+	}
+	
+	public void stop(View view) {
+		Log.i(tag,"stop");
+		mHandler = new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				Log.i(tag,"hmmm...");
+				switch(msg.what){
+				case SUCCESS_CONNECT:
+					Log.i(tag,"Inside stahp!");
+					ConnectedThread connectedThread = new ConnectedThread((BluetoothSocket)msg.obj);
+					
+					Log.i(tag, "Starting to write");
+											
+					int[] t = new int[]{152, 4, IRobot.drive, 0, 0, 0, 0};
+					
+					for(int i = 0; i < t.length; i++){
+						connectedThread.write(t[i]);
+						Thread.yield();
+					}
+					
+					int[] r = new int[] {153};
+					
+					for(int i = 0; i < r.length; i++){
+						connectedThread.write(r[i]);
+						Thread.yield();
+					}
+					
+					Log.i(tag,"STAHPPED!!");
+					break;
+				case MESSAGE_READ:
+					Log.i(tag,"inside read");
+					byte[] readBuf = (byte[])msg.obj;
+					String string = new String(readBuf);
+					Toast.makeText(getApplicationContext(), string, 0).show();
+					break;
+				}
+			}
+		};
+		mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
 	}
 
 	class ConnectThread extends Thread {
